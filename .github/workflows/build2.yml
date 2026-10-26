@@ -1,22 +1,18 @@
-name: Test and Deploy
+name: Test and Deploy v2
 on: push
 jobs:
-  lint:
+  deploy:
     runs-on: ubuntu-latest
     steps:
       - name: Get code
         uses: actions/checkout@v3
+      - name: Setup Dependancies
+        run: npm ci
       - name: Run lint
-        run: npm lint
-  test:
-    needs: lint
-    runs-on: ubuntu-latest
-    steps:
+        run: npm run lint
       - name: Run Test
-        run: npm Test
-  build:
-    needs: test
-    runs-on: ubuntu-latest
-    steps:
+        run: npm run Test
       - name: Run Build
-        run: npm build
+        run: npm run build
+      - name: Deploy Build
+        run: echo "Deploy build"
