@@ -31,7 +31,7 @@ jobs:
       - name: Run Build
         run: npm run build
   deploy:
-    needs: test
+    needs: [build,test]
     runs-on: ubuntu-latest
     steps:
       - name: Get code
