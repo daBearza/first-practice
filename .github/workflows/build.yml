@@ -1,0 +1,22 @@
+name: Test and Deploy
+on: push
+jobs:
+  lint:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Get code
+        uses: actions/checkout@v3
+      - name: Run lint
+        run: npm lint
+  test:
+    needs: lint
+    runs-on: ubuntu-latest
+    steps:
+      - name: Run Test
+        run: npm Test
+  build:
+    needs: test
+    runs-on: ubuntu-latest
+    steps:
+      - name: Run Build
+        run: npm build
