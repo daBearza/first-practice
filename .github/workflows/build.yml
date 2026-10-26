@@ -19,7 +19,7 @@ jobs:
       - name: Setup Dependancies
         run: npm ci
       - name: Run Test
-        run: npm run Test
+        run: npm run test
   build:
     needs: test
     runs-on: ubuntu-latest
